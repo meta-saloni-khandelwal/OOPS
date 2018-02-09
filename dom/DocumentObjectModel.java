@@ -10,75 +10,74 @@ import java.util.ArrayList;
  * @author Saloni Khandelwal
  */
 import java.util.List;
-
+/*
+ * Class to return id and cssClass of an element
+ */
 class SpanElement implements Element{
-	String id;
-	String cssClass;
+	public String id;
+	public String cssClass;
 	/**
-	 * 
-	 * @param id
-	 * @param cssClass
+	 * @param id -stores the id of an element
+	 * @param cssClass - stores the class of an element
 	 */
 	public SpanElement(String id, String cssClass) {
     	this.id = id;
     	this.cssClass = cssClass;
 	}
-	@Override
 	public String getId(){
 		return this.id;
 	}
-	@Override
 	public String getCssClassName(){
 		return this.cssClass;
 	}
+	
 	public Element getObject(){
 		return new SpanElement(this.id,this.cssClass);
 	}
 
 }
+/*
+ * Class to return id and cssClass of an element
+ */
 class DivElement implements Element{
-	String id;
-	String cssClass;
-	List<Element> listOfInnerElements = new ArrayList<Element>();
+	public String id;
+	public String cssClass;
+	public List<Element> listOfInnerElements = new ArrayList<Element>();
 	/**
-	 * 
-	 * @param id
-	 * @param cssClass
+	 * @param id -stores the id of an element
+	 * @param cssClass - stores the class of an element
 	 */
 	public DivElement(String id, String cssClass) {
     	this.id = id;
     	this.cssClass = cssClass;
 	}
-	@Override
 	public String getId(){
 		return this.id;
 	}
-	@Override
 	public String getCssClassName(){
 		return this.cssClass;
 	}
-	@Override
 	public Element getObject(){
 		return new DivElement(this.id,this.cssClass);
 	}
 }
+/*
+ * Class to return id and cssClass of an element
+ */
 class ButtonElement implements Element{
-	String id;
-	String cssClass;
+	public String id;
+	public String cssClass;
 	/**
-	 * 
-	 * @param id
-	 * @param cssClass
+	 * @param id -stores the id of an element
+	 * @param cssClass - stores the class of an element
 	 */
 	public ButtonElement(String id, String cssClass) {
     	this.id = id;
     	this.cssClass = cssClass;
 	}
-	@Override
 	public String getId(){
 		return this.id;
 	}
-	@Override
 	public String getCssClassName(){
 		return this.cssClass;
 	}
@@ -87,50 +86,47 @@ class ButtonElement implements Element{
 	}
 	
 }
-
-class ImgElement implements Element{
-	String id;
-	String cssClass;
-	String src;
+/*
+ * Class to return id and cssClass of an element
+ */
+class ImageElement implements Element{
+	public String id;
+	public String cssClass;
+	public String source;
 	/**
-	 * 
-	 * @param id
-	 * @param cssClass
-	 * @param src
+	 * @param id -stores the id of an element
+	 * @param cssClass - stores the class of an element
 	 */
-	public ImgElement(String id, String cssClass, String src) {
+	public ImageElement(String id, String cssClass, String src) {
     	this.id = id;
     	this.cssClass = cssClass;
-    	this.src = src;
+    	this.source = source;
 	}
-	@Override
 	public String getId(){
 		return this.id;
 	}
-	@Override
 	public String getCssClassName(){
 		return this.cssClass;
 	}
 	public Element getObject(){
-		return new ImgElement(this.id,this.cssClass, this.src = src);
+		return new ImageElement(this.id,this.cssClass, this.source = source);
 	}
 }
 
-
+/*
+ * class to implement Document Object Model
+ */
 public class DocumentObjectModel {
-	/**
-	 * 
-	 * @param args
-	 */
+
 	public static void main(String []args){
 		List<Element> domList = new ArrayList<Element>();					//List to store Elements in hierarchy
 		DOMHierarchy DOM = new DOMHierarchy();
 		
-		Element div1   = new DivElement("div1", "border");					
-		Element div2   = new DivElement("div2", "border");
-		Element span1  = new SpanElement("span1", "color");
-		Element img    = new ImgElement("img1", "height", "D:\\img1.jpg");
-		Element div3   = new SpanElement("div3", "color");
+		Element div1 = new DivElement("div1", "border");					
+		Element div2 = new DivElement("div2", "border");
+		Element span1 = new SpanElement("span1", "color");
+		Element img = new ImageElement("img1", "height", "D:\\img1.jpg");
+		Element div3 = new SpanElement("div3", "color");
 		Element button = new SpanElement("btn1", "padding");
 		//Adding Elements to list
 		domList.add(div1);
