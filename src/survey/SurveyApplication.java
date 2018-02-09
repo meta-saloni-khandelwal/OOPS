@@ -85,11 +85,12 @@ public class SurveyApplication {
 		report.analyzeMultipleSelectOptions(listOfParticipants);
 		Collections.sort(listOfQuestionObject);
 		System.out.println("Questions After Sorting");
-		for (Question q: listOfQuestionObject)
+		for (Question question: listOfQuestionObject)
         {
-            System.out.println(q.questionId+" "+q.type+" "+q.questionHeading);
+            System.out.println(question.questionId+" "+question.type+" "+question.questionHeading);
                 
 	}
 	}
 }
+
 
