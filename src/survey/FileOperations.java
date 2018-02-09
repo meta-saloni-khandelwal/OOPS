@@ -19,17 +19,17 @@ import java.util.ArrayList;
  * A class to perform read and write operations on file
  */
 public class FileOperations {
-	static ArrayList<Question> listOfQuestionObject = new ArrayList<Question>();
+	public static ArrayList<Question> listOfQuestionObject = new ArrayList<Question>();
 	/*
 	 * Below functions read the input file and creates a list of Question object.
 	 */
 	public void readFile(){
 		try{
 			File inputFile = new File("./inputFile/surveyfile");
-			FileReader fr = new FileReader(inputFile);
-			BufferedReader br = new BufferedReader(fr);
+			FileReader filereader = new FileReader(inputFile);
+			BufferedReader bufferreader = new BufferedReader(filereader);
 			
-			String line = br.readLine();
+			String line = bufferreader.readLine();
 			Question[] questionObject = new Question[4];
 			for(int i = 0; i < questionObject.length; i++){
 				questionObject[i] = new Question();
@@ -42,8 +42,8 @@ public class FileOperations {
 				String []values = line.split(",");
 				String questionLine = values[2];
 				String questionType = values[1];
-				int qID = Integer.parseInt(values[0]);
-				questionObject[j].questionId = qID;
+				int questionID = Integer.parseInt(values[0]);
+				questionObject[j].questionId = questionID;
 				questionObject[j].type = questionType;
 				questionObject[j].questionHeading = questionLine;
 			
@@ -70,7 +70,7 @@ public class FileOperations {
 				}
 				listOfQuestionObject.add(questionObject[j]);
 				j++;
-				line = br.readLine();
+				line = bufferreader.readLine();
 			}
 			
 		}
@@ -89,18 +89,18 @@ public class FileOperations {
 		try{
 			String str = "";
 			File  outputFile = new File("./inputFile/ReportA.txt"); 
-			FileWriter fw = new FileWriter(outputFile,true);
-			BufferedWriter bf = new BufferedWriter(fw);
+			FileWriter fileWriter = new FileWriter(outputFile,true);
+			BufferedWriter bufferWriter = new BufferedWriter(fileWriter);
 			for(int i = 0; i < percentage.length; i++){
 				str += (i+1)+" - "+percentage[i]+"%  ";
 
 			}
-			bf.write(str);
-			bf.append(System.lineSeparator());
-			bf.close();
+			bufferWriter.write(str);
+			bufferWriter.append(System.lineSeparator());
+			bufferWriter.close();
 		}
-		catch(Exception e){
-			System.out.println(e);
+		catch(Exception ex){
+			System.out.println(ex);
 		}
 	}
 	
@@ -111,19 +111,19 @@ public class FileOperations {
 		try{
 			String str = "";
 			File  outputFile = new File("./inputFile/ReportB.txt"); 
-			FileWriter fw = new FileWriter(outputFile,true);
-			BufferedWriter bf = new BufferedWriter(fw);
+			FileWriter fileWriter = new FileWriter(outputFile,true);
+			BufferedWriter bufferWriter = new BufferedWriter(fileWriter);
 			int i = 0;
 			for(Participants participantObject : listOfParticipants){
 				str += "Participant "+ (i+1) +" : "+participantObject.mapOfIdAndListOfAnswers.get(i).toString()+" ";
 				i++;
 			}
-			bf.write(str);
-			bf.append(System.lineSeparator());
-			bf.close();
+			bufferWriter.write(str);
+			bufferWriter.append(System.lineSeparator());
+			bufferWriter.close();
 		}
-		catch(Exception e){
-			System.out.println(e);
+		catch(Exception ex){
+			System.out.println(ex);
 		}
 	}
 }
